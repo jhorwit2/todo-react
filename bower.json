@@ -1,0 +1,25 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "authors": [
+    "Josh Horwitz <jhorwit2@gmu.edu>"
+  ],
+  "description": "Todo practice app with react & backbone",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "bootstrap": "~3.2.0",
+    "backbone": "~1.1.2",
+    "react": "~0.11.2",
+    "font-awesome": "~4.2.0"
+  }
+}

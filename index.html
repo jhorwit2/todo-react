@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.underscore.min.js"></script>
+
+    <script src="bower_components/react/react.min.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+
+    <script src="bower_components/backbone/backbone.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    </head>
+<body>
+    <header class="container">
+        <div class="jumbotron">
+            <h1>Welcome to the React TODO app</h1>
+        </div>
+    </header>
+    <section class="container panel">
+        <div class="input-group">
+            <span class="input-group-addon">New todo:</span>
+            <input class="form-control"/>
+            <div class="input-group-addon">
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </section>
+    <section id="todos" class="container panel">
+
+    </section>
+
+    <script type="text/jsx" src="public/js/todoRow.js"></script>
+    <script type="text/jsx" src="public/js/app.js"></script>
+
+    <script src="public/js/todoModel.js"></script>
+    <script src="public/js/todos.js"></script>
+
+</body>
+</html>
