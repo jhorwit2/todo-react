@@ -4,23 +4,17 @@ var app = app || {};
 
 (function () {
     app.TodoRow = React.createClass({
-        getInitialState: function () {
-            return {
-                edit: false
-            };
-        },
         edit: function () {
-            this.setState({edit: true});
+            this.props.edit();
         },
-        save: function (e) {
-            this.props.todo.save({text: e.target.value});
-            this.setState({edit: false});
+        save: function () {
+            this.props.save(this.refs.edit.getDOMNode().value);
         },
         completed: function () {
             this.props.todo.save({completed: !this.props.todo.get('completed')}) ;
         },
         render: function () {
-            console.log('render');
+            console.log('render', this.props.editing);
             return (
                 <tr>
                     <td>{this.props.todo.cid.substr(1)}</td>
@@ -28,7 +22,8 @@ var app = app || {};
                         onChange={this.completed}
                         checked={this.props.todo.get('completed')}/></td>
                     <td>
-                        <textarea className="form-control" readOnly={!this.state.edit} >{this.props.todo.get('text')}</textarea>
+                        <textarea className="form-control" ref="edit"
+                            readOnly={!this.props.editing}>{this.props.todo.get('text')}</textarea>
                     </td>
                     <td>
                         <div className="dropdown">
@@ -38,7 +33,8 @@ var app = app || {};
                             <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li><a role="menuitem" tabindex="-1" onClick={this.save}>Save</a></li>
                                 <li><a role="menuitem" tabindex="-1" onClick={this.edit}>Edit</a></li>
-                                <li><a role="menuitem" tabindex="-1">Delete</a></li>
+                                <li><a role="menuitem" tabindex="-1" onClick={this.props.cancel}>Cancel</a></li>
+                                <li><a role="menuitem" tabindex="-1" onClick={this.props.destroy}>Delete</a></li>
                             </ul>
                         </div>
                     </td>

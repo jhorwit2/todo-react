@@ -31,11 +31,35 @@ var app = app || {};
         getBackboneCollections: function () {
             return [this.props.todos];
         },
+        getInitialState: function () {
+            return {
+                editing: null
+            };
+        },
+        save: function (todo, text) {
+            this.setState({editing: null});
+            todo.save({text: text});
+        },
+        edit: function (todo) {
+            this.setState({editing: todo.cid});
+        },
+        destroy: function (todo) {
+            todo.destroy();
+        },
+        cancel: function () {
+            this.setState({editing: null});
+        },
         render: function () {
 
             var todos = _(this.props.todos.models).map(function (todo) {
-                return <TodoRow todo={todo} />;
-            });
+
+                return <TodoRow todo={todo}
+                                save={this.save.bind(this, todo)}
+                                edit={this.edit.bind(this, todo)}
+                                cancel={this.cancel}
+                                editing={this.state.editing === todo.cid}
+                                destroy={this.destroy.bind(todo)} />;
+            }.bind(this));
 
             return (
                 <table className="table">
